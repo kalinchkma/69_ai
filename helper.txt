@@ -1,0 +1,7 @@
+-- for linking python with c
+gcc -fPIC -shared -o outputfile.so sourcefile.c
+
+-- load file
+import ctypes
+clibs = ctypes.CDLL("/home/nanashi/Desktop/program/harvard_ai/search/loop.so")
+clibs.test()
