@@ -157,11 +157,14 @@ class Maze():
             # Mark node as explored
             self.explored.add(node.state)
 
+            # snap-short mage
+            m.output_image(f"./images/maze{self.num_explored}.png", show_explored=True)
             # Add neighbors to frontier
             for action, state in self.neighbors(node.state):
                 if not frontier.contains_state(state) and state not in self.explored:
                     child = Node(state=state, parent=node, action=action)
                     frontier.add(child)
+            
 
 
     def output_image(self, filename, show_solution=True, show_explored=False):
@@ -199,6 +202,10 @@ class Maze():
 
                 # Explored
                 elif solution is not None and show_explored and (i, j) in self.explored:
+                    fill = (212, 97, 85)
+                
+                # for every move
+                elif show_explored and (i, j) in self.explored:
                     fill = (212, 97, 85)
 
                 # Empty cell
